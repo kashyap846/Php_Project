@@ -16,10 +16,20 @@ class Main extends Controller {
         //print_r("Index");
         setcookie("1_Jar","2020-30-03");
         // echo($_COOKIE["1_Jar"]);
-        if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $safe = false;
+        if($_SESSION["CSRF_Token"] == $_COOKIE["CSRF_Token"] &&
+        $_SESSION["CSRF_Token"] == $_POST["CSRF_Token"]){
+            $safe = true;
+        } 
+
+        if($_SERVER["REQUEST_METHOD"]=="POST" && $safe == true){
             echo($_POST["username"] . "<br>");
             echo($_POST["pass"] . "<br>");
             $_SESSION["username"] = $_POST["username"];
+
+        }else{
+            echo("session end");
+            session_destroy();
 
         }
         
@@ -28,9 +38,10 @@ class Main extends Controller {
             echo("Logged in as" . $_POST["username"]);
         }
         
-        $this->view("template/header");
+        //$this->view("template/header");
+
         $this->view("main/form", array("CSRF_Token" => $CSRF_Token));
-        $this->view("template/footer");
+        //$this->view("template/footer");
         
     }
 
