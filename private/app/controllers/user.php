@@ -46,7 +46,7 @@ class User extends Controller {
     }else{
         echo("bad csrf");
     }
-    }else{
+    }else if($_SERVER["request_method"] == "GET"){
        // print_r("else");
        $csrf = random_int(10000,100000000);
        //echo($csrf);
@@ -54,6 +54,8 @@ class User extends Controller {
         //$_COOKIE["csrf"] = $csrf;
         setcookie("csrf",$csrf);
         $this->view("test/login" , array("csrf" => $csrf));
+    }else{
+        http_response_code(405);
     }
         
     }
