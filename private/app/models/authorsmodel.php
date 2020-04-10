@@ -7,8 +7,8 @@ class AuthorsModel extends Model {
     }
 
     function authenticateUser($username,$password){
-        $clean_username = htmlentities($username);
-        $clean_password = htmlentities($password);
+        $clean_username = $username;
+        $clean_password = $password;
         $sql = "SELECT `hash_password`, `first_name`, `last_name` from authors where email= ?";
         $stmt = $this->db->prepare($sql);
         $count = $stmt->execute(Array($clean_username));

@@ -20,18 +20,22 @@ class User extends Controller {
     } 
 
     function Login(){
-        if($_SERVER["request_method"] = "POST"){
+        if($_SERVER["request_method"] == "POST"){
+           // print_r("if");
             $this->model("AuthorsModel");
-        $authenticate = $this->AuthorsModel->authenticateUser("kashyap846@gmail.com","1234");
+            $clean_username = htmlentities($_POST["username"]);
+        $clean_password = htmlentities($_POST["password"]);
+        $authenticate = $this->AuthorsModel->authenticateUser($clean_username,$clean_password);
         if($authenticate){
             //header("location: /user/");
             
-            echo("authenticate");
+            header("location: /user/");
         }else{
             echo("No authenticated");
         }
     }else{
-        $this->view("test/login")
+       // print_r("else");
+        $this->view("test/login");
     }
         
     }
