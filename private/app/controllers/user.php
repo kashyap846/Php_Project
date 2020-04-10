@@ -23,6 +23,14 @@ class User extends Controller {
         if($_SERVER["request_method"] == "POST"){
            // print_r("if");
            $post_csrf = htmlentities($_POST["csrf"]);
+           $cookie_csrf = $_COOKIE["csrf"];
+           $sess_cookie = $_SESSION["csrf"];
+
+           if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){
+
+           
+
+
             $this->model("AuthorsModel");
             $clean_username = htmlentities($_POST["username"]);
         $clean_password = htmlentities($_POST["password"]);
@@ -32,12 +40,16 @@ class User extends Controller {
             
             header("location: /user/");
         }else{
+          
             echo("No authenticated");
         }
     }else{
+        echo("bad csrf");
+    }
+    }else{
        // print_r("else");
        $csrf = random_int(10000,100000000);
-       echo($csrf);
+       //echo($csrf);
        $_SESSION["csrf"] = $csrf;
         //$_COOKIE["csrf"] = $csrf;
         setcookie("csrf",$csrf);
