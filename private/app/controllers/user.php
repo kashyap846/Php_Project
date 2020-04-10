@@ -22,6 +22,7 @@ class User extends Controller {
     function Login(){
         if($_SERVER["request_method"] == "POST"){
            // print_r("if");
+           $post_csrf = htmlentities($_POST["csrf"]);
             $this->model("AuthorsModel");
             $clean_username = htmlentities($_POST["username"]);
         $clean_password = htmlentities($_POST["password"]);
