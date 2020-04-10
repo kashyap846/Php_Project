@@ -1,4 +1,5 @@
 <form action="/" method="POST">
+<input type="hidden" value = <?php echo($CSRF_Token)?>>
 <label for="username">Username</label>
 <input type="text" id="username" name="username">
 <label for="pass">Password</label>

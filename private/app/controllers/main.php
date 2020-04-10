@@ -10,6 +10,9 @@ class Main extends Controller {
      * http://localhost/
      */
     function Index () {
+        $CSRF_Token = rand(1000, 100000);
+        setcookie('CSRF_Token',$CSRF_Token);
+        $_SESSION["CSRF_Token"] = $CSRF_Token;
         //print_r("Index");
         setcookie("1_Jar","2020-30-03");
         // echo($_COOKIE["1_Jar"]);
@@ -19,12 +22,14 @@ class Main extends Controller {
             $_SESSION["username"] = $_POST["username"];
 
         }
-
+        
+        
         if(isset($_SESSION["username"])){
             echo("Logged in as" . $_POST["username"]);
         }
+        
         $this->view("template/header");
-        $this->view("main/form");
+        $this->view("main/form", array("CSRF_Token" => $CSRF_Token));
         $this->view("template/footer");
         
     }
