@@ -20,7 +20,8 @@ class User extends Controller {
     } 
 
     function Login(){
-        $this->model("AuthorsModel");
+        if($_SERVER["request_method"] = "POST"){
+            $this->model("AuthorsModel");
         $authenticate = $this->AuthorsModel->authenticateUser("kashyap846@gmail.com","1234");
         if($authenticate){
             //header("location: /user/");
@@ -29,6 +30,10 @@ class User extends Controller {
         }else{
             echo("No authenticated");
         }
+    }else{
+        $this->view("test/login")
+    }
+        
     }
     function Logout(){
         session_unset();
