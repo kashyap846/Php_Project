@@ -8,7 +8,14 @@ class User extends Controller {
 
     function Index () {
         $this->view("template/header");
-        $this->view("test/test");
+
+        $is_authenticated = isset($_SESSION["username"]);
+        if($is_authenticated){
+            $this->view("test/authenticated");
+        }else{
+            $this->view("test/noauthenticated");
+        }
+        
         $this->view("template/footer");
     } 
 
@@ -17,6 +24,7 @@ class User extends Controller {
         $authenticate = $this->AuthorsModel->authenticateUser("kashyap846@gmail.com","1234");
         if($authenticate){
             //header("location: /user/");
+            
             echo("authenticate");
         }else{
             echo("No authenticated");
@@ -26,6 +34,7 @@ class User extends Controller {
         session_unset();
         session_destroy();
         $_SESSION = Array();
+        header("location: /user/");
     }
 
 }
