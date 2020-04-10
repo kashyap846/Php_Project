@@ -34,5 +34,8 @@ function install(){
 }
 
 }
+$installer = new Installer();
+$installer->configure();
+$installer->install();
 
 ?>
