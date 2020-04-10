@@ -84,6 +84,8 @@ abstract class Controller {
     }
 
     function view ($path, $data = []) {
+        if(is_array($data))
+        extract($data);
 
         require(ROOT . "/private/app/views/$path.php");
 

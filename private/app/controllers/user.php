@@ -35,7 +35,12 @@ class User extends Controller {
         }
     }else{
        // print_r("else");
-        $this->view("test/login");
+       $csrf = random_int(10000,100000000);
+       echo($csrf);
+       $_SESSION["csrf"] = $csrf;
+        //$_COOKIE["csrf"] = $csrf;
+        setcookie("csrf",$csrf);
+        $this->view("test/login" , array("csrf" => $csrf));
     }
         
     }
