@@ -55,7 +55,7 @@ class User extends Controller {
         setcookie("csrf",$csrf);
         $this->view("test/login" , array("csrf" => $csrf));
     }else{
-        http_response_code(405);
+        //http_response_code(405);
     }
         
     }
