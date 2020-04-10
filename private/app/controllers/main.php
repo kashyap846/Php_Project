@@ -19,6 +19,10 @@ class Main extends Controller {
             $_SESSION["username"] = $_POST["username"];
 
         }
+
+        if(isset($_SESSION["username"])){
+            echo("Logged in as" . $_POST["username"]);
+        }
         $this->view("template/header");
         $this->view("main/form");
         $this->view("template/footer");
