@@ -11,9 +11,16 @@ class Main extends Controller {
      */
     function Index () {
         //print_r("Index");
+        setcookie("1_Jar","2020-30-03");
+        // echo($_COOKIE["1_Jar"]);
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            echo($_POST["username"] . "<br>");
+            echo($_POST["pass"] . "<br>");
+            $_SESSION["username"] = $_POST["username"];
 
+        }
         $this->view("template/header");
-        $this->view("main/index");
+        $this->view("main/form");
         $this->view("template/footer");
         
     }

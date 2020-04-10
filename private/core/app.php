@@ -60,7 +60,7 @@
             //print_r($route[1] );
 
             $route[1] = strtolower($route[1]);
-
+            session_start();
             if (file_exists(ROOT . "/private/app/controllers/" . $route[1] . ".php")) {
                 $this->require("/private/app/controllers/" . $route[1] . ".php");
                 //print_r("Appp::if"+$route[1]);
