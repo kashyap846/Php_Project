@@ -1,4 +1,5 @@
 <?php
+echo(password_hash("1234",PASSWORD_DEFAULT));
 require(__DIR__ . '/private/core/app.php');
 
     //print_r("1");
