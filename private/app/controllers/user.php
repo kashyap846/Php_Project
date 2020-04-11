@@ -20,8 +20,10 @@ class User extends Controller {
     } 
 
     function Login(){
-        if($_SERVER["request_method"] == "POST"){
-           // print_r("if");
+        echo("login");
+        //echo($_SERVER["request_method"]);
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+           print_r("POST");
            $post_csrf = htmlentities($_POST["csrf"]);
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
@@ -58,7 +60,7 @@ class User extends Controller {
 }else{
         //http_response_code(405);
            $csrf = random_int(10000,100000000);
-       //echo($csrf);
+       echo("get");
        $_SESSION["csrf"] = $csrf;
         //$_COOKIE["csrf"] = $csrf;
         setcookie("csrf",$csrf);
