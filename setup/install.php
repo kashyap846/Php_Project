@@ -17,7 +17,7 @@ function install(){
             echo("if");
             $dsn = $this->config["database"]["driver"] . ":" .
             "host=" . $this->config["database"]["dbhost"] .
-            ":dbname=" . $this->config["database"]["dbname"];
+            ";dbname=" . $this->config["database"]["dbname"];
             echo("before execute222" . $dsn);
             $this->db = new PDO(
                 $dsn
