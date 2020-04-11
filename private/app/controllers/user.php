@@ -20,14 +20,16 @@ class User extends Controller {
     } 
 
     function Login(){
-        echo("login");
+        //echo("login");
         //echo($_SERVER["request_method"]);
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-           print_r("POST");
+           //print_r("POST");
            $post_csrf = htmlentities($_POST["csrf"]);
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
-
+        echo("sess_cookie::$sess_cookie");
+        echo("cookie_csrf::$cookie_csrf");
+        echo("post_csrf::$post_csrf");
            if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){
 
            
@@ -48,23 +50,19 @@ class User extends Controller {
     }else{
         echo("bad csrf");
     }
-    // }else if($_SERVER["request_method"] == "GET"){
-    //    // print_r("else");
-    //    $csrf = random_int(10000,100000000);
-    //    //echo($csrf);
-    //    $_SESSION["csrf"] = $csrf;
-    //     //$_COOKIE["csrf"] = $csrf;
-    //     setcookie("csrf",$csrf);
-    //     $this->view("test/login" , array("csrf" => $csrf));
-    // 
-}else{
-        //http_response_code(405);
-           $csrf = random_int(10000,100000000);
-       echo("get");
+    }else if($_SERVER["REQUEST_METHOD"] == "GET"){
+       // print_r("else");
+       $csrf = random_int(10000,100000000);
+       //echo($csrf);
        $_SESSION["csrf"] = $csrf;
         //$_COOKIE["csrf"] = $csrf;
         setcookie("csrf",$csrf);
+        echo("sess cookie::" . $_SESSION["csrf"]);
         $this->view("test/login" , array("csrf" => $csrf));
+    
+}else{
+        http_response_code(405);
+           
     }
         
     }
