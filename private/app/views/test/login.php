@@ -9,6 +9,6 @@ form > *{
 <label for="username">Email</label>
 <input type="text" id="username" name="username" required autocomplete="Email">
 <label for="pass">Password</label>
-<input type="password" id="pass" name="pass" autocomplete="Password">
+<input type="password" id="password" name="password" autocomplete="Password">
 <input type="submit" value="Login">
 </form>
