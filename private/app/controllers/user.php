@@ -27,9 +27,9 @@ class User extends Controller {
            $post_csrf = htmlentities($_POST["csrf"]);
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
-        echo("sess_cookie::$sess_cookie");
-        echo("cookie_csrf::$cookie_csrf");
-        echo("post_csrf::$post_csrf");
+        //echo("sess_cookie::$sess_cookie");
+        //echo("cookie_csrf::$cookie_csrf");
+        //echo("post_csrf::$post_csrf");
            if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){
 
            
@@ -39,6 +39,7 @@ class User extends Controller {
             $clean_username = htmlentities($_POST["username"]);
         $clean_password = htmlentities($_POST["password"]);
         $authenticate = $this->AuthorsModel->authenticateUser($clean_username,$clean_password);
+        //echo("controller authenticate" . $authenticate);
         if($authenticate){
             //header("location: /user/");
             
