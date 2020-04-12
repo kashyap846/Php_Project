@@ -27,14 +27,10 @@ class User extends Controller {
            $post_csrf = htmlentities($_POST["csrf"]);
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
-        //echo("sess_cookie::$sess_cookie");
-        //echo("cookie_csrf::$cookie_csrf");
-        //echo("post_csrf::$post_csrf");
+        // echo("sess_cookie::$sess_cookie");
+        // echo("cookie_csrf::$cookie_csrf");
+        // echo("post_csrf::$post_csrf");
            if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){
-
-           
-
-
             $this->model("AuthorsModel");
             $clean_username = htmlentities($_POST["username"]);
         $clean_password = htmlentities($_POST["password"]);
@@ -55,7 +51,7 @@ class User extends Controller {
        $csrf = random_int(10000,100000000);
         setcookie("csrf",$csrf);
         $_SESSION["csrf"] = $csrf;
-        echo("sess cookie::" . $_SESSION["csrf"]);
+        //echo("sess cookie::" . $_SESSION["csrf"]);
         $this->view("test/login" , array("csrf" => $csrf));
     
 }else{
