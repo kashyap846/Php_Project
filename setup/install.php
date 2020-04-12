@@ -26,7 +26,7 @@ function install(){
             );
             echo("before execute111");
             $sql = file_get_contents("setup/data/init.sql");
-            echo("before execute");
+            //echo("before execute" . $sql);
             $this->db->exec($sql);
 
             echo "Databse setup successfully. \n";
