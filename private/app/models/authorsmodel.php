@@ -14,6 +14,7 @@ class AuthorsModel extends Model {
         $count = $stmt->execute(Array($clean_username));
         $row = $stmt->fetch();
         $hash_password = $row[0];
+        echo("hash_password" . $hash_password);
         $is_authenticated = false;
         if(isset($hash_password)){
             $is_authenticated = password_verify($clean_password,$hash_password);
@@ -21,7 +22,7 @@ class AuthorsModel extends Model {
                 //session_start();
                 $_SESSION["first_name"] = $row[1];
                 $_SESSION["last_name"] = $row[2];
-                $SESSION_["username"] = $clean_username;
+                $_SESSION["username"] = $clean_username;
 
                 $update_sql = "UPDATE `authors` set `last_login_date` = CURRENT_TIMESTAMP() where email = ?";
                 $update_stmt = $this->db->prepare($update_sql);
