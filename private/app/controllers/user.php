@@ -51,12 +51,9 @@ class User extends Controller {
         echo("bad csrf");
     }
     }else if($_SERVER["REQUEST_METHOD"] == "GET"){
-       // print_r("else");
        $csrf = random_int(10000,100000000);
-       //echo($csrf);
-       $_SESSION["csrf"] = $csrf;
-        //$_COOKIE["csrf"] = $csrf;
         setcookie("csrf",$csrf);
+        $_SESSION["csrf"] = $csrf;
         echo("sess cookie::" . $_SESSION["csrf"]);
         $this->view("test/login" , array("csrf" => $csrf));
     

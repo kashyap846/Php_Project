@@ -1,4 +1,4 @@
-USE MyDB;
+USE database;
 
 CREATE TABLE authors (
 email VARCHAR(128) NOT NULL PRIMARY KEY,
