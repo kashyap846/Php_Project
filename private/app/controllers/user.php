@@ -64,7 +64,8 @@ class User extends Controller {
         session_unset();
         session_destroy();
         $_SESSION = Array();
-        header("location: /user/");
+        // header("location: /user/");
+        $this->view("test/logout");
     }
 
 }
