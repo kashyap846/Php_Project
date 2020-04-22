@@ -6,9 +6,23 @@ class User extends Controller {
         parent::__construct();
     }
 
+    private function getRefererDetails(){
+        $completeUrl = $_SERVER['HTTP_REFERER'];
+        $url_split = explode("/", $_SERVER['HTTP_REFERER']);
+        $count = count($url_split);
+        $splits = array();
+        for($i = 3;$i < $count; $i++){
+            $splits[$i-3] = $url_split[$i];
+        }
+        echo($_SESSION["username"]);
+        // echo($count . "<br><br>");
+        // print_r($url_split);
+        return join("/",$splits);
+    }
+
     function Index () {
         $this->view("template/header");
-
+        echo($this->getRefererDetails());
         $is_authenticated = isset($_SESSION["username"]);
         if($is_authenticated){
             $this->view("test/authenticated");
@@ -27,9 +41,9 @@ class User extends Controller {
            $post_csrf = htmlentities($_POST["csrf"]);
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
-        echo("sess_cookie::$sess_cookie");
-        echo("cookie_csrf::$cookie_csrf");
-        echo("post_csrf::$post_csrf");
+        //echo("sess_cookie::$sess_cookie");
+        //echo("cookie_csrf::$cookie_csrf");
+        //echo("post_csrf::$post_csrf");
            //if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){
             $this->model("AuthorsModel");
             $clean_username = htmlentities($_POST["username"]);
