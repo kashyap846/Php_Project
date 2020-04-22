@@ -17,7 +17,7 @@ class  Blog extends Controller
     function Read($postId){
         $this->model("BlogModel");
        $post = $this->BlogModel->getPostById($postId);
-       $this->view("template/header");
+       $this->view("blog/header", $post);
         $this->view("blog/post", $post);
         
         $this->view("template/footer");
