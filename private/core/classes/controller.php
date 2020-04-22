@@ -13,7 +13,7 @@ abstract class Controller {
     function __construct () {
 
         $this->route = explode('/', URI);
-
+        $this->currentUrl = $this->buildCurrentUrl($this->route,1);
         $this->args = count($this->route);
         //print_r("count::") ;
         //print_r($this->route[1]) ;
@@ -21,13 +21,13 @@ abstract class Controller {
 
     }
 
-    private function buildCurrentUrl(){
-        $completeUrl = $_SERVER['HTTP_REFERER'];
-        $url_split = explode("/", $_SERVER['HTTP_REFERER']);
+    protected function buildCurrentUrl($urlArray, $start_index){
+        $completeUrl = $this->route;
+        $url_split = explode("/",  $completeUrl);
         $count = count($url_split);
         $splits = array();
-        for($i = 3;$i < $count; $i++){
-            $splits[$i-3] = $url_split[$i];
+        for($i = start_index;$i < $count; $i++){
+            $splits[$i-start_index] = $url_split[$i];
         }
         //echo($_SESSION["username"]);
         // echo($count . "<br><br>");
