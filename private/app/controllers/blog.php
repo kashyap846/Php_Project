@@ -23,7 +23,17 @@ class  Blog extends Controller
         $this->view("template/footer");
         
 
-    }function Create(){
+    }
+    function Create()
+    {
+        $is_auth = isset($_SESSION["username"]);
+        if($is_auth){
+            echo("authentication");
+
+        }else{
+            header("location: /blog");
+        }
+
 
     }
 
