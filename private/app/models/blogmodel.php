@@ -20,7 +20,11 @@ class BlogModel extends Model {
         return $stmt->fetch();
 }
 function createPost($title, $author, $content){
-    $slug = str_replace(\\);
+    $slug = (str_replace(" ", "-", strtolower($title)) . random_int(1000,999999));
+    $sql = "INSERT INTO posts (slug, title, content, author) VALUES (?, ?, ?, ?)";
+    $stmt = $this -> db -> prepare($sql);
+    $stmt -> execute(Array($slug,$title,$content,$author));
+    return $slug;
 }
 
 }
