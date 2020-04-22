@@ -54,8 +54,10 @@ class User extends Controller {
         if($authenticate){
             //header("location: /user/");
             //$home = "/";
-            $page = $this->buildCurrentUrl($_SERVER['HTTP_REFERER'],5);
-            
+            $page = $this->buildCurrentUrl($_SERVER['HTTP_REFERER'],3);
+            if($this->currentUrl == $page){
+                $page = "/";
+            }
             header("location: " . $page);
            // header("location: /user/");
         }else{
@@ -85,7 +87,12 @@ class User extends Controller {
         session_destroy();
         $_SESSION = Array();
         // header("location: /user/");
-        $this->view("test/logout");
+        $page = $this->buildCurrentUrl($_SERVER['HTTP_REFERER'],3);
+            if($this->currentUrl == $page){
+                $page = "/";
+            }
+       // $this->view("test/logout");
+       header("location: " . $page );
     }
 
 }
