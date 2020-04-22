@@ -19,6 +19,9 @@ class BlogModel extends Model {
         $stmt->execute(Array($postId));
         return $stmt->fetch();
 }
+function createPost($title, $author, $content){
+    $slug = str_replace(\\);
+}
 
 }
 
