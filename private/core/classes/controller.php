@@ -7,6 +7,8 @@ abstract class Controller {
     private $args = 0;
 
     private $params = [];
+    
+    protected $currentUrl = "/";
 
     function __construct () {
 
@@ -17,6 +19,21 @@ abstract class Controller {
         //print_r($this->route[1]) ;
         $this->router();
 
+    }
+
+    private function buildCurrentUrl(){
+        $completeUrl = $_SERVER['HTTP_REFERER'];
+        $url_split = explode("/", $_SERVER['HTTP_REFERER']);
+        $count = count($url_split);
+        $splits = array();
+        for($i = 3;$i < $count; $i++){
+            $splits[$i-3] = $url_split[$i];
+        }
+        //echo($_SESSION["username"]);
+        // echo($count . "<br><br>");
+        // print_r($url_split);
+       // echo(join("/",$splits));
+        return join("/",$splits) . "/";
     }
 
     private function router () {

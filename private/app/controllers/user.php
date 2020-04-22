@@ -57,7 +57,7 @@ class User extends Controller {
             $page = $this->getRefererDetails();
             echo($home);
             echo($page);
-            header("location: " . $page);
+            //header("location: " . $page);
            // header("location: /user/");
         }else{
           
