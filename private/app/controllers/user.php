@@ -14,10 +14,11 @@ class User extends Controller {
         for($i = 3;$i < $count; $i++){
             $splits[$i-3] = $url_split[$i];
         }
-        echo($_SESSION["username"]);
+        //echo($_SESSION["username"]);
         // echo($count . "<br><br>");
         // print_r($url_split);
-        return join("/",$splits);
+       // echo(join("/",$splits));
+        return join("/",$splits) . "/";
     }
 
     function Index () {
