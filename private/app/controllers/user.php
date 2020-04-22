@@ -23,7 +23,7 @@ class User extends Controller {
 
     function Index () {
         $this->view("template/header");
-        echo($this->getRefererDetails());
+        //echo($this->getRefererDetails());
         $is_authenticated = isset($_SESSION["username"]);
         if($is_authenticated){
             $this->view("test/authenticated");
@@ -69,7 +69,7 @@ class User extends Controller {
     }
     }else if($_SERVER["REQUEST_METHOD"] == "GET"){
        $csrf = random_int(10000,100000000);
-       //session_start();
+       session_start();
        $_SESSION["csrf"] = $csrf;
         setcookie("csrf",$csrf);
         

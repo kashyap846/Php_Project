@@ -26,15 +26,23 @@ class  Blog extends Controller
     }
     function Create()
     {
+        //echo("username::" . $_SESSION["username"]);
         $is_auth = isset($_SESSION["username"]);
-        if($is_auth){
-            echo("authentication");
+         if($is_auth){
+             header("location: /blog");
+             return;
+        }
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         }else{
-            header("location: /blog");
+
+        $this->view("template/header");
+        $this->view("blog/create");
+        $this->view("template/footer");
+
+        
+
         }
-
-
     }
 
 
