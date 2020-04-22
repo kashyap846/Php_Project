@@ -8,12 +8,12 @@ abstract class Controller {
 
     private $params = [];
     
-    protected $currentUrl = "/";
+   // protected $currentUrl = "/";
 
     function __construct () {
 
         $this->route = explode('/', URI);
-        $this->currentUrl = $this->buildCurrentUrl($this->route,1);
+        //$this->currentUrl = $this->buildCurrentUrl($this->route,1);
         $this->args = count($this->route);
         //print_r("count::") ;
         //print_r($this->route[1]) ;

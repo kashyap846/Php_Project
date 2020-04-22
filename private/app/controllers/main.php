@@ -34,7 +34,7 @@ class Main extends Controller {
         
         
         if(isset($_SESSION["username"])){
-            echo("Logged in as" . $_POST["username"]);
+            echo("Logged in as" . $_SESSION["username"]);
         }
         
         //$this->view("template/header");
