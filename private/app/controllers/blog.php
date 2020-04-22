@@ -1,3 +1,4 @@
+<?php
 class  Blog extends Controller
 {
      function __construct() {
@@ -5,11 +6,11 @@ class  Blog extends Controller
     }
     function Index(){
         $this->model("BlogModel");
-        $posts=$this->BlogModel->getAllPosts();
+        $posts = $this->BlogModel->getAllPosts();
 
         $this->view("template/header");
         $this->view("blog/index", $posts);
-        echo("<br><br><br>hello there");
+        echo("hello there");
         $this->view("template/footer");
 
     }
@@ -23,3 +24,4 @@ class  Blog extends Controller
 
     
 }
+?>

@@ -61,10 +61,10 @@
             //print_r($route[1] );
             
             $route[1] = strtolower($route[1]);
-            
+            print_r("start::" . $route[1] . "<br>");
             if (file_exists(ROOT . "/private/app/controllers/" . $route[1] . ".php")) {
                 $this->require("/private/app/controllers/" . $route[1] . ".php");
-                //print_r("Appp::if"+$route[1]);
+                print_r("Appp::if " . $route[1] . "<br>");
                 $controller = new $route[1]();
             } else {
                 $this->require("/private/app/controllers/main.php");

@@ -11,9 +11,6 @@ class BlogModel extends Model {
         $stmt= $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
-
-
- 
 }
 }
 
