@@ -53,8 +53,12 @@ class User extends Controller {
         //echo("controller authenticate" . $authenticate);
         if($authenticate){
             //header("location: /user/");
-            
-            header("location: /user/");
+            $home = "/";
+            $page = $this->getRefererDetails();
+            echo($home);
+            echo($page);
+            header("location: " . $page);
+           // header("location: /user/");
         }else{
           
             echo("No authenticated");
