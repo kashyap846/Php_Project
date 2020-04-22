@@ -28,7 +28,6 @@ class Main extends Controller {
             $_SESSION["username"] = $_POST["username"];
 
         }else{
-            echo("session end");
             session_destroy();
 
         }
