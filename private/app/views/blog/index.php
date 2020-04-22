@@ -2,7 +2,7 @@
 <ul>
 <?php
 foreach($posts as $post){
-echo("<li><a href=\"\blog\read\\" . $post->slug . "\">" . "</a> - <datetime>" . $post->post_date . " </datetime>");
+echo("<li><a href=\"\blog\read\\" . $post->slug . "\">" . "</a> - <time>" . $post->post_date . " </time>");
 }
 ?>
 </ul>

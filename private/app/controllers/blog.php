@@ -8,7 +8,7 @@ class  Blog extends Controller
         $posts=$this->BlogModel->getAllPosts();
 
         $this->view("template/header");
-        $this->view("main/index", $posts);
+        $this->view("blog/index", $posts);
         echo("<br><br><br>hello there");
         $this->view("template/footer");
 
