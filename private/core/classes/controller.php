@@ -23,11 +23,15 @@ abstract class Controller {
 
     protected function buildCurrentUrl($urlArray, $start_index){
         $completeUrl = $this->route;
-        $url_split = explode("/",  $completeUrl);
+        if(is_array($completeUrl)){
+           $url_split = $completeUrl; 
+        }else{
+            $url_split = explode("/",  $completeUrl);
+        }
         $count = count($url_split);
         $splits = array();
-        for($i = start_index;$i < $count; $i++){
-            $splits[$i-start_index] = $url_split[$i];
+        for($i = $start_index;$i < $count; $i++){
+            $splits[$i-$start_index] = $url_split[$i];
         }
         //echo($_SESSION["username"]);
         // echo($count . "<br><br>");
