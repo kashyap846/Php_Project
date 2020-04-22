@@ -36,10 +36,11 @@ class  Blog extends Controller
         if($_SERVER["REQUEST_METHOD"]=="POST"){
             $title = $_POST["title"];
             $content = $_POST["content"];
-            $author = $_POST["username"];
-          //  $_SESSION["username"];
+            $author = $_POST["author"];
+          //  $_SESSION["author"];
           $this -> model("BlogModel");
           $slug = $this -> BlogModel -> createPost($title, $author, $content);
+          
           header("location: /blog/read/" . $slug);
 
 
