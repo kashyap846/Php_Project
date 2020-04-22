@@ -16,7 +16,7 @@ abstract class Controller {
         //$this->currentUrl = $this->buildCurrentUrl($this->route,1);
         $this->args = count($this->route);
         //print_r("count::") ;
-        print_r("Controller" . $this->route[1]) ;
+        //print_r("Controller" . $this->route[1]) ;
         $this->router();
 
     }
