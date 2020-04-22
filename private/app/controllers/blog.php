@@ -7,14 +7,20 @@ class  Blog extends Controller
     function Index(){
         $this->model("BlogModel");
         $posts = $this->BlogModel->getAllPosts();
+        $input = Array("posts" => $posts);
 
         $this->view("template/header");
-        $this->view("blog/index", $posts);
-        echo("hello there");
+        $this->view("blog/index", $input);
         $this->view("template/footer");
 
     }
-    function Read($blogId){
+    function Read($postId){
+        $this->model("BlogModel");
+       $post = $this->BlogModel->getPostById($postId);
+       $this->view("template/header");
+        $this->view("blog/post", $post);
+        
+        $this->view("template/footer");
         
 
     }function Create(){
