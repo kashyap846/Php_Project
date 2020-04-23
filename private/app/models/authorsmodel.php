@@ -24,7 +24,7 @@ class AuthorsModel extends Model {
                 $_SESSION["first_name"] = $row[1];
                 $_SESSION["last_name"] = $row[2];
                 $_SESSION["username"] = $clean_username;
-                //echo("authenticateUser:" . $_SESSION["username"]);
+                echo("authenticateUser:" . $_SESSION["username"]);
                 $update_sql = "UPDATE `authors` set `last_login_date` = CURRENT_TIMESTAMP() where email = ?";
                 $update_stmt = $this->db->prepare($update_sql);
                 $update_stmt->execute(Array($clean_username));

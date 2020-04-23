@@ -42,7 +42,8 @@ class User extends Controller {
            $post_csrf = htmlentities($_POST["csrf"]);
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
-        //echo("sess_cookie::$sess_cookie");
+
+        echo("sess_cookie::$sess_cookie");
         //echo("cookie_csrf::$cookie_csrf");
         //echo("post_csrf::$post_csrf");
            //if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){
@@ -69,7 +70,7 @@ class User extends Controller {
     }
     }else if($_SERVER["REQUEST_METHOD"] == "GET"){
        $csrf = random_int(10000,100000000);
-       session_start();
+       //session_start();
        $_SESSION["csrf"] = $csrf;
         setcookie("csrf",$csrf);
         
