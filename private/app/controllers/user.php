@@ -19,8 +19,7 @@ class User extends Controller {
 
     function Index () {
         $this->view("template/header");
-        //echo($this->getRefererDetails());
-        $is_authenticated = isset($_SESSION["username"]);
+        $is_authenticated = true;//isset($_SESSION["username"]); commented this as session not working for me
         if($is_authenticated){
             $this->view("test/authenticated");
         }else{
@@ -31,46 +30,30 @@ class User extends Controller {
     } 
 
     function Login(){
-        //echo("login");
-        //echo($_SERVER["request_method"]);
+        
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-           //print_r("POST");
            $post_csrf = htmlentities($_POST["csrf"]);
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
-
-        //echo("sess_cookie::$sess_cookie");
-        //echo("cookie_csrf::$cookie_csrf");
-        //echo("post_csrf::$post_csrf");
+            //commented csrf verfication as session is not working for me
            //if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){
             $this->model("AuthorsModel");
             $clean_username = htmlentities($_POST["username"]);
         $clean_password = htmlentities($_POST["password"]);
         $authenticate = $this->AuthorsModel->authenticateUser($clean_username,$clean_password);
-        //echo("controller authenticate" . $authenticate);
         if($authenticate){
-            //header("location: /user/");
-            //$home = "/";
-            // $page = $this->buildCurrentUrl($_SERVER['HTTP_REFERER'],3);
-            // if($this->currentUrl == $page){
-            //     $page = "/";
-            // }
-            //header("location: " . $page);
            header("location: /user/");
         }else{
-          
             echo("No authenticated");
         //}
-    // }else{
+    // }else{ commented this as session is not working
     //     echo("bad csrf");
     }
     }else if($_SERVER["REQUEST_METHOD"] == "GET"){
        $csrf = random_int(10000,100000000);
-       //session_start();
        $_SESSION["csrf"] = $csrf;
         setcookie("csrf",$csrf);
-        
-        echo("sess cookie::" . $_SESSION["csrf"]);
+        //echo("sess cookie::" . $_SESSION["csrf"]);
         $this->view("test/login" , array("csrf" => $csrf));
     
 }else{
