@@ -3,6 +3,8 @@
 //if (isset($_SESSION["username"])) { ?>
 
 <a href="/blog/update/<?php echo($slug); ?>" />Update </a>
+<br/>
+<a href="/blog/" />View All posts </a>
 <?php
 //}
 ?>
