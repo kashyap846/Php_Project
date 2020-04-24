@@ -28,9 +28,10 @@ function createPost($title, $author, $content){
     return $slug;
 }
 function updatePost($slug, $title, $author, $content){
-    $update_sql = "UPDATE `posts` set `title` = ?, `content` = ?  where `slug` = ?";
+    $update_sql = "UPDATE `posts` set `title` = ?, `content` = ?, `author` = ? where `slug` = ?";
     $update_stmt = $this->db->prepare($update_sql);
-    $update_stmt->execute(Array($clean_username));
+    $update_stmt->execute(Array($title,$content,$content,$slug));
+    return $slug;
 }
 
 }
