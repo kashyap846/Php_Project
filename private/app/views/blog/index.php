@@ -4,7 +4,7 @@
 //if (isset($_SESSION["username"])) { ?>
 <a href="/user/logout/" />Logout </a>
 <br/>
-<a href="/blog/create/" />Create a New Post </a>
+<a href="/blog/createmyblogpost/" />Create a New Post </a>
 <?php
 //}
 ?>

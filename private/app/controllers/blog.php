@@ -24,9 +24,8 @@ class  Blog extends Controller
         
 
     }
-    function Create()
+    function CreateMyBlogPost()
     {
-        //echo("username::" . $_SESSION["username"]);
         $is_auth = isset($_SESSION["username"]);
         //commenting this part as session is not working for me
         //  if(!$is_auth){
@@ -67,13 +66,11 @@ class  Blog extends Controller
             $title = $_POST["title"];
             $content = $_POST["content"];
             $author = $_POST["author"];
-            //echo("post" . $slug . " " . $title . " ". $author);
             $this -> model("BlogModel");
             $slug = $this -> BlogModel -> editBlogPost($slug, $title, $author, $content);
           
          header("location: /blog/read/" . $slug);
         }else{
-        //echo("get");
         $this->model("BlogModel");
         $post = $this->BlogModel->getPostById($postId);
         $this->view("template/header");
