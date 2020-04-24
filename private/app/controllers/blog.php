@@ -56,7 +56,7 @@ class  Blog extends Controller
     }
 
     function Update($postId){
-    echo("postId::" . $postId);
+    //echo("postId::" . $postId);
     $is_auth = isset($_SESSION["username"]);
     //commenting this part as session is not working for me
         //  if(!$is_auth){
@@ -68,13 +68,13 @@ class  Blog extends Controller
             $title = $_POST["title"];
             $content = $_POST["content"];
             $author = $_POST["author"];
-            echo("post" . $slug . " " . $title . " ". $author);
+            //echo("post" . $slug . " " . $title . " ". $author);
             $this -> model("BlogModel");
             $slug = $this -> BlogModel -> updatePost($slug, $title, $author, $content);
           
-         // header("location: /blog/read/" . $slug);
+         header("location: /blog/read/" . $slug);
         }else{
-        echo("get");
+        //echo("get");
         $this->model("BlogModel");
         $post = $this->BlogModel->getPostById($postId);
         $this->view("template/header");

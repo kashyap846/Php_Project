@@ -30,7 +30,7 @@ function createPost($title, $author, $content){
 function updatePost($slug, $title, $author, $content){
     $update_sql = "UPDATE `posts` set `title` = ?, `content` = ?, `author` = ? where `slug` = ?";
     $update_stmt = $this->db->prepare($update_sql);
-    $update_stmt->execute(Array($title,$content,$content,$slug));
+    $update_stmt->execute(Array($title,$content,$author,$slug));
     return $slug;
 }
 
