@@ -3,6 +3,11 @@
 //commenting this section as session is empty for me
 //if (isset($_SESSION["username"])) { ?>
 <a href="/user/logout/" />Logout </a>
+<br/>
+<a href="/blog/create/" />Create a New Post </a>
+<?php
+//}
+?>
 <ul>
 <?php
 foreach($posts as $post){
