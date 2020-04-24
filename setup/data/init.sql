@@ -24,5 +24,22 @@ INDEX (author),
 FOREIGN KEY (author)
 REFERENCES authors (email)
 );
+
 INSERT INTO `posts` (slug, title, content, author) 
 VALUES ("post-a", "Post A", "<aritcle><h2>Post A</h2><section><p>This is a basic aritcle</p></section></article>","kashyap846@gmail.com");
+
+
+INSERT INTO `posts` (slug, title, content, author) 
+VALUES ("post-z", "Post Z", "<aritcle><h2>Post Z</h2><section><p>This is a basic aritcle</p></section></article>","kashyap846@gmail.com");
+
+
+INSERT INTO `posts` (slug, title, content, author) 
+VALUES ("post-y", "Post Y", "<aritcle><h2>Post Y</h2><section><p>This is a basic aritcle</p></section></article>","kashyap846@gmail.com");
+
+
+INSERT INTO `posts` (slug, title, content, author) 
+VALUES ("post-x", "Post X", "<aritcle><h2>Post X</h2><section><p>This is a basic aritcle</p></section></article>","kashyap846@gmail.com");
+
+
+INSERT INTO `posts` (slug, title, content, author) 
+VALUES ("post-w", "Post W", "<aritcle><h2>Post W</h2><section><p>This is a basic aritcle</p></section></article>","kashyap846@gmail.com");
