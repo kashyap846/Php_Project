@@ -1,4 +1,5 @@
 <h1>BlogPost</h1>
+
 <ul>
 <?php
 foreach($posts as $post){
