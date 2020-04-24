@@ -2,7 +2,7 @@
 //commenting this section as session is empty for me
 //if (isset($_SESSION["username"])) { ?>
 
-<a href="/blog/editpost/<?php echo($slug); ?>" />Update </a>
+<a href="/blog/editpost/<?php echo($slug); ?>" />Edit My blog post </a>
 <br/>
 <a href="/blog/" />View All posts </a>
 <?php

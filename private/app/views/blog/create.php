@@ -1,6 +1,6 @@
 <h1>Create Post</h1>
 
-<form method = "post" action = "/blog/create">
+<form method = "post" action = "/blog/createmyblogpost">
 
 
 <input type = "hidden" value = "" name = "csrf">
