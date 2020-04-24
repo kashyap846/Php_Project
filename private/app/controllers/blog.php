@@ -64,12 +64,13 @@ class  Blog extends Controller
         //      return;
         // }
         if($_SERVER["REQUEST_METHOD"]=="POST"){
+            $slug = $_POST["slug"];
             $title = $_POST["title"];
             $content = $_POST["content"];
             $author = $_POST["author"];
-            echo("post");
-            //$this -> model("BlogModel");
-            //$slug = $this -> BlogModel -> createPost($title, $author, $content);
+            echo("post" . $slug . " " . $title . " ". $author);
+            $this -> model("BlogModel");
+            $slug = $this -> BlogModel -> updatePost($slug, $title, $author, $content);
           
          // header("location: /blog/read/" . $slug);
         }else{
