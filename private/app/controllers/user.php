@@ -14,10 +14,6 @@ class User extends Controller {
         for($i = 3;$i < $count; $i++){
             $splits[$i-3] = $url_split[$i];
         }
-        //echo($_SESSION["username"]);
-        // echo($count . "<br><br>");
-        // print_r($url_split);
-       // echo(join("/",$splits));
         return join("/",$splits) . "/";
     }
 
@@ -43,7 +39,7 @@ class User extends Controller {
            $cookie_csrf = $_COOKIE["csrf"];
            $sess_cookie = $_SESSION["csrf"];
 
-        echo("sess_cookie::$sess_cookie");
+        //echo("sess_cookie::$sess_cookie");
         //echo("cookie_csrf::$cookie_csrf");
         //echo("post_csrf::$post_csrf");
            //if($sess_cookie == $post_csrf && $sess_cookie == $cookie_csrf){

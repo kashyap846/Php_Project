@@ -28,18 +28,18 @@ class  Blog extends Controller
     {
         //echo("username::" . $_SESSION["username"]);
         $is_auth = isset($_SESSION["username"]);
-         if($is_auth){
-             header("location: /blog");
-             return;
-        }
+        //commenting this part as session is not working for me
+        //  if(!$is_auth){
+        //      header("location: /blog");
+        //      return;
+        // }
 
         if($_SERVER["REQUEST_METHOD"]=="POST"){
             $title = $_POST["title"];
             $content = $_POST["content"];
             $author = $_POST["author"];
-          //  $_SESSION["author"];
-          $this -> model("BlogModel");
-          $slug = $this -> BlogModel -> createPost($title, $author, $content);
+            $this -> model("BlogModel");
+            $slug = $this -> BlogModel -> createPost($title, $author, $content);
           
           header("location: /blog/read/" . $slug);
 
@@ -53,6 +53,16 @@ class  Blog extends Controller
         
 
         }
+    }
+
+    function Update($postId){
+    echo("postId::" . $postId);
+    $is_auth = isset($_SESSION["username"]);
+    //commenting this part as session is not working for me
+        //  if(!$is_auth){
+        //      header("location: /blog");
+        //      return;
+        // }
     }
 
 
