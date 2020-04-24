@@ -55,7 +55,7 @@ class  Blog extends Controller
         }
     }
 
-    function Update($postId){
+    function EditPost($postId){
     $is_auth = isset($_SESSION["username"]);
     //commenting this part as session is not working for me
         //  if(!$is_auth){
