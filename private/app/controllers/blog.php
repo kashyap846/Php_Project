@@ -63,6 +63,23 @@ class  Blog extends Controller
         //      header("location: /blog");
         //      return;
         // }
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            $title = $_POST["title"];
+            $content = $_POST["content"];
+            $author = $_POST["author"];
+            echo("post");
+            //$this -> model("BlogModel");
+            //$slug = $this -> BlogModel -> createPost($title, $author, $content);
+          
+         // header("location: /blog/read/" . $slug);
+        }else{
+        echo("get");
+        $this->model("BlogModel");
+        $post = $this->BlogModel->getPostById($postId);
+        $this->view("template/header");
+        $this->view("blog/update", $post);
+        $this->view("template/footer");
+        }
     }
 
 
