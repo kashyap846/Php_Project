@@ -27,7 +27,7 @@ function createPost($title, $author, $content){
     $stmt->execute(Array($slug,$title,$content,$author));
     return $slug;
 }
-function updatePost($slug, $title, $author, $content){
+function editBlogPost($slug, $title, $author, $content){
     $update_sql = "UPDATE `posts` set `title` = ?, `content` = ?, `author` = ? where `slug` = ?";
     $update_stmt = $this->db->prepare($update_sql);
     $update_stmt->execute(Array($title,$content,$author,$slug));
